@@ -52,11 +52,11 @@ class Tweet(BaseModel):
     updated_at: Optional[datetime] = Field(default=None)
     by: User = Field(...)
 
-# Path Operations
+##Path Operations
 
-# @app.get(path="/")
-# def home():
-#     return {"Twitter API": "Working"}
+@app.get(path="/")
+def home():
+    return {"Twitter API": "Working"}
 
 ## Users
 
@@ -235,3 +235,9 @@ def update_tweet():
 )
 def delete_tweet():
     pass
+
+
+"""
+    Steroids Project
+    https://github.com/JoseNoriegaa/platzi-twitter-api-fastapi
+"""
