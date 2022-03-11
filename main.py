@@ -43,9 +43,9 @@ class Tweet(BaseModel):
 
 # Path Operations
 
-@app.get(path="/")
-def home():
-    return {"Twitter API": "Working"}
+# @app.get(path="/")
+# def home():
+#     return {"Twitter API": "Working"}
 
 ## Users
 
@@ -109,3 +109,53 @@ def update_user():
 def delete_user():
     pass
 ## Tweets
+
+@app.post(
+    path="/tweets",
+    response_model=Tweet,
+    status_code=status.HTTP_201_CREATED,
+    summary="Create Tweet",
+    tags=["Tweets"]
+)
+def create_tweet():
+    pass
+
+@app.get(
+    path="/tweets",
+    response_model=List[Tweet],
+    status_code=status.HTTP_200_OK,
+    summary="Get all Tweets",
+    tags=["Tweets"]
+)
+def get_tweets():
+    pass
+
+@app.get(
+    path="/tweets/{tweet_id}",
+    response_model=Tweet,
+    status_code=status.HTTP_200_OK,
+    summary="Find Tweet",
+    tags=["Tweets"]
+)
+def find_tweet():
+    pass
+
+@app.put(
+    path="/tweets/{tweet_id}",
+    response_model=Tweet,
+    status_code=status.HTTP_200_OK,
+    summary="Update a Tweet",
+    tags=["Tweets"]
+)
+def update_tweet():
+    pass
+
+@app.delete(
+    path="/tweets/{tweet_id}",
+    response_model=Tweet,
+    status_code=status.HTTP_200_OK,
+    summary="Delete a Tweet",
+    tags=["Tweets"]
+)
+def delete_tweet():
+    pass
