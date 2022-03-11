@@ -16,6 +16,7 @@ app = FastAPI()
 class UserBase(BaseModel):
     user_id: UUID = Field(...)
     email: EmailStr = Field(...)
+
 class UserLogin(UserBase):
     password: str = Field(
         ...,
@@ -30,6 +31,14 @@ class User(UserBase):
         max_length=20
     )
     birth_date: Optional[date] = Field(default=None)
+
+class UserRegister(User):
+    password: str = Field(
+        ...,
+        min_length=8,
+        max_length=64
+    )
+
 class Tweet(BaseModel):
     tweet_id: UUID = Field(...)
     content: str = Field(
@@ -57,7 +66,22 @@ class Tweet(BaseModel):
     tags=["Users"]
 )
 def signup():
-    pass
+    """
+        # Signup
+
+        This path operation register a user in the app
+
+        Parameters:
+            - Request body parameter
+                - user: UserRegister
+
+        Returns a json with the basic user information:
+            - user_id: UUID
+            - email: Emailstr
+            - first_name: str
+            - last_name: str
+            - birth_date: str
+    """
 
 @app.post(
     path="/login",
